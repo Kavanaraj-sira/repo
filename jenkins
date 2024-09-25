@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git scm') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Kavanaraj-sira/maven-project.git'
+            }
+        }
+        stage('build') {
+            steps {
+                bat 'mvn install'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'this is test stage'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'this is deploy stage'
+            }
+        }
+    }
+}
